@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
  
-public class ClearPressed : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
+public class PlayPressed : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
  
 	public bool buttonPressed;
 	TrailScript script;
@@ -19,11 +19,11 @@ public class ClearPressed : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
 	public void OnPointerDown(PointerEventData eventData){
 		buttonPressed = true;
-		script.clearPressed = true;
+		script.playPressed = true;
 	}
 	 
 	public void OnPointerUp(PointerEventData eventData){
 	  buttonPressed = false;
-		script.clearPressed = false;
+		script.playPressed = false;
 	}
 }

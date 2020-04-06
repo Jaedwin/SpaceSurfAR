@@ -20,6 +20,8 @@ public class TrailScript : MonoBehaviour {
 	public bool buttonPressed = false;
 	public bool playPressed = false;
 
+	public bool clearPressed = false;
+
 	bool playerVisible = false;
 
 	// Use this for initialization
@@ -61,21 +63,30 @@ public class TrailScript : MonoBehaviour {
 				rigidBody.constraints &= ~RigidbodyConstraints.FreezePositionY;
 				rigidBody.constraints &= ~RigidbodyConstraints.FreezePositionX;
 			}
-			// GameObject[] spheres = GameObject.FindGameObjectsWithTag("sphere");
-			// int count = spheres.Length;
+		}
 
-			// foreach (var sphere in spheres){
-			// 	Destroy(sphere);
-			// }
+		if(clearPressed) {
+			GameObject[] spheres = GameObject.FindGameObjectsWithTag("sphere");
+			int count = spheres.Length;
 
-			// Vector3 camPos = camera.transform.position;
- 			// Vector3 camDirection = camera.transform.forward;
- 			// Quaternion camRotation = camera.transform.rotation;
- 			// float spawnDistance = 0.5f;
-			// Debug.Log("Touched"+camPos.x+" "+camPos.y+" "+camPos.z);
- 			// Vector3 spawnPos = camPos + (camDirection * spawnDistance);
-			// GameObject cur = Instantiate(lineObject, spawnPos,  camRotation);
-			// cur.transform.SetParent(this.transform);
+			foreach (var sphere in spheres){
+				Destroy(sphere);
+			}
+
+			if(playerVisible){
+				playerVisible = false;
+				Player = GameObject.FindGameObjectsWithTag("player")[0];
+				Destroy(Player);
+			}
+
+			Vector3 camPos = camera.transform.position;
+ 			Vector3 camDirection = camera.transform.forward;
+ 			Quaternion camRotation = camera.transform.rotation;
+ 			float spawnDistance = 0.5f;
+			Debug.Log("Touched"+camPos.x+" "+camPos.y+" "+camPos.z);
+ 			Vector3 spawnPos = camPos + (camDirection * spawnDistance);
+			GameObject cur = Instantiate(lineObject, spawnPos,  camRotation);
+			cur.transform.SetParent(this.transform);
 		}
 	}
 }
