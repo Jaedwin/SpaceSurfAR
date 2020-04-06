@@ -10,7 +10,7 @@ using UnityEngine;
 
 public class TrailScript : MonoBehaviour {
 
-	public GameObject lineObject;
+	public GameObject lineObject, railLeft, railRight;
 	public GameObject playerObject;
 	Rigidbody rigidBody;
 
@@ -36,13 +36,18 @@ public class TrailScript : MonoBehaviour {
  			Quaternion camRotation = camera.transform.rotation;
  			float spawnDistance = 0.5f;
 			Debug.Log("Touched"+camPos.x+" "+camPos.y+" "+camPos.z);
+
  			Vector3 spawnPos = camPos + (camDirection * spawnDistance);
+			spawnPos.z = .5f; 
+
 			GameObject cur = Instantiate(lineObject, spawnPos,  camRotation);
 
 			if(!playerVisible){
 				playerVisible = true;
 				Vector3 playerPos = spawnPos;
 				playerPos.y = spawnPos.y + 0.1f;
+				playerPos.x = spawnPos.x + 0.1f;
+				playerPos.z = .5f; 
 				Instantiate(playerObject, playerPos, camRotation);
 			}
 
