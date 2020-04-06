@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 45059551e5c3944cea4f2ea1eeaa83fb
+  - enabled: 1
     path: Assets/Scenes/SpaceSurfAR.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
